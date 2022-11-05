@@ -30,6 +30,7 @@ brew install oblv
     and run
     
     ```
+    wget "https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv_0.4.0_amd64.deb"
     sudo dpkg -i oblv_0.4.0_amd64.deb
     ```
 - RPM based distributions
@@ -37,6 +38,7 @@ brew install oblv
     For `rpm` based distributions, download [oblv-0.4.0-1.x86_64.rpm](https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv-0.4.0-1.x86_64.rpm) and run.
     
     ```
+    wget https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv-0.4.0-1.x86_64.rpm
     sudo rpm --install oblv-0.4.0-1.x86_64.rpm
     ```
 
@@ -49,40 +51,6 @@ For windows, download [oblv-0.4.0-x86_64.msi](https://api.oblivious.ai/oblv-ccli
 
 You can also download the [binaries here](https://docs.oblivious.ai/cli/binaries).
 
-### Test if OBLV works
+### Documentation
 
-To test if `OBLV` proxy works on your system,
-
-- On `MacOS` and `Linux`, run
-
-    ```
-    oblv --help
-    ```
-- On windows, run
-
-    ```
-    oblv.exe --help
-    ```
-you would get the output something similar to this
-
-```
-Configuration file stored at: "/home/user/.config/oblv/oblv_config.yaml"
-
-oblv 0.4.0
-Oblivious Software Ltd. <oblivious.ai>
-Oblivious client app for encrypted connection to secure enclave
-
-USAGE:
-    oblv <SUBCOMMAND>
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-
-SUBCOMMANDS:
-    connect      Connect to enclave
-    help         Prints this message or the help of the given subcommand(s)
-    keygen       Generate public/private rsa key pair
-    reconnect    Reconnect to a previously connected enclave
-
-```
+For usage, please refer to [oblivious documentation](https://docs.oblivious.ai/cli/available_commands)
