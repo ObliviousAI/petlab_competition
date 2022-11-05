@@ -1,8 +1,8 @@
-# :earth_asia: United Nations PET Lab Competition 2022 :see_no_evil::hear_no_evil::speak_no_evil: :earth_africa:
+# :earth_asia: UN PET Lab Competition 2022 :see_no_evil::hear_no_evil::speak_no_evil: :earth_africa:
 
 Welcome to the main repository of the UN PET Lab's 2022 data science competition. In this competition, you'll get to learn about modern privacy-enhancing technologies, secure enclaves, differential privacy, the privacy-utility tradeoff, eyes-off-data-science and more. You will then apply your new-found knowledge to learn about a real UN dataset which must be kept semi-private.
 
-**Sign-up now if you haven'y already:** https://petlab.officialstatistics.org/
+**Sign-up now if you haven'y already (will close registrations on the 7th of November):** https://petlab.officialstatistics.org/
 
 ---
 
@@ -21,26 +21,90 @@ Welcome to the main repository of the UN PET Lab's 2022 data science competition
 <a name="intro"/>
 
 ## 1. What's the competition all about? :thinking:
+The competition is just like most other data science competitions, like Kaggle, DrivenData or any of the others you may be familiar with - with one major difference. You do not have direct access to all of your training data.
+
+The dataset of the competition is split into columns and rows of data. The vast majority of columns are seen by the competitors. (`x` and `y`) Rows are also split between those used for training and testing (`train` and `test`).  At the beginning of the competition you will be shared `train_x` and `test_x` and your goal will be to predict `test_y`. 
+
+So how can you go about predicting `test_y`? Good question. You could simply guess it purely at random, but depending on the weighting of the labels in `train_y` you will have a very hard time getting any meaningful score.
+
+Really what you would like to do is to ask questions of the relationship between `train_x` and `train_y` and hence endeavour to learn the function `f` which minimises 
+
+```math
+|f(train\_x) - train\_y|
+``` 
+
+assuming this also minimises 
+
+```math
+|f(test\_x) - test\_y| 
+```
+
+This is where enclaves and differential privacy enters the mix. You can ask questions using OpenDP (to take transformations and measurements), smart noise (to make noisy SQL queries and synthetic data) and DiffPrivLib (to train noisy machine learning models). Each query will cost you some epsilon and depending on the query, delta. This more of this you spend, the more of your score will be decreased, but hopefully you’ve learned something of value and thus your submissions are more accurate and thus your overall score improves.
+
+Trading off privacy versus accuracy (also known as utility) is a very important and “hot” topic within the privacy-enhancing technologies domain.  In this competition, you’ll be trying your best to balance these too. 
 
 <a name="why-pets"/>
 
 ## 2. Why are the UN & the NSOs interested? :united_nations:
+Data disclosure controls are of upmost importance to national statistics offices (NSOs), governments and NGOs. Such controls have been used in one form or another to protect the identity and anonymity of citizens in surveys for over a century. 
+
+However, typical data disclosure controls lack some of the mathematical guarantees which can be offered by model privacy-enhancing technologies such as Differential Privacy. They also tend to be highly manual processes, which minimises their ability to be automated. 
+
+Enclaves, and input privacy in general, is also an important part of the picture. NSOs are constantly limited in terms of the data they can collect, join and disseminate, undergoing strict privacy impact assessments in order to make sure the data they maintain is used for it’s intended purpose. 
+
+Many micro data libraries from NSOs and, for example the UN, require users to say via a form the intended usage of the data as a light control. However,  there really are no guarantees when using a good-faith system like this. Enclaves guarantee the software that will be run on the sensitive data, hence giving a much stricter level of control.
+
+When combining data from multiple sources, for example healthcare and census information, the combined dataset is often more sensitive than either one individually. Traditionally in many NSOs, a member of staff would have to take an oath and pledge to only use the data in a very limited capacity and never disclose any of it to another person. This of course ends up being very bureaucratic and blindly trusts individuals. Enclaves allow technology hardware and cloud providers to act as data brokers automatically. While in theory you are still entrusting chip manufacturers and cloud providers, there are many advantages such as the ability to perform rigours security and compliance audits and reviews. Hence mitigating much of the risk.
+
+This competition endeavours to simulate a very realistic scenario for early adopters of PETs amongst NSOs in which they wish allow users to perform eyes-off data science for public good; minimising data leakage risk and while providing the ability to make data driven decision making. How well you all do, what strategies appeared to be the most effect, and ultimately your direct feedback (which we’ll ask via a short survey at the end) is extremely informative to the NSOs.
 
 <a name="how-to"/>
 
 ## 3. How does the competition work? :computer:
 
+As discussed in **[1. What’s the competition all about?](#/intro)**, this is primarily a data-science competition - just one where you are limited to use the tools of enclaves and differential privacy. 
+
+We have set you up with three subdirectories in this repo. The first, named `proxies`, shows you how to install and make a proxy connection to the enclave. It should only be used if you wish to run everything locally. This is strongly not advised as due to the number of contestants our ability to support you if you have an issue with Python versions, pip, Jupiter, proxying,  etc will be extremely limited. 
+
+Instead,  you’ll find links below that will open a Datalore (JetBrains version of Google Colab) with Jupiter Notebooks ready to go. You may be wondering why we are sharing these via Datalore and not the more popular Google Colab, and the honest answer is that the library dependancies need at minimum Python3.8 and Google Colab is still at Python3.7. There are hacks around this, but we thought it would cause more confusion than it was worth. 
+
+The second folder, named `sandbox` offers Jupyter Notebooks (via Datalore) with worked solutions you can play with. The sandbox just uses a standard UCI dataset and your scores etc have no impact on the competition. Consider it a training ground. 
+
+Finally, there is `competition` which is similar to `sandbox` but only offers basic scaffolding for you to use in the actual competition. What you do in there **will** effect your score, so thread lightly!
+
+Finally, to connect to the enclaves, you’ll need a public/private key pair which will authenticate you and your team (one key pair per member of the team - don’t share as you may kick one another of their session depending on internal routing in the enclave cluster).
+
 <a name="learn"/>
 
 ## 4. How do I learn about the frameworks used in the competition? :brain: 
+
+It’s pretty straight forward - you just learn the underlying tools directly. From the enclave perspective you’ll be guided through it in the notebooks themselves, so no need to over think that part. For the differential privacy libraries check out the following:
+1. [OpenDP](https://github.com/opendp/opendp)
+2. [SmartNoise SQL](https://github.com/opendp/smartnoise-sdk/tree/main/sql)
+3. [SmartNoise Synth](https://github.com/opendp/smartnoise-sdk/tree/main/synth)
+4. [DiffPrivLib](https://github.com/IBM/differential-privacy-library)
 
 <a name="score"/>
 
 ## 5. How does scoring work? :100:
 
+The scoring, as presented in workshop 2 (at XX:YY:ZZ), is determined as your accuracy less a function of the privacy used to get you there. More precisely, your score equals to:
+
+```math
+Score = Accuracy - \frac{\epsilon}{\sigma} -  \left(1 - \exp(-\alpha \delta D)\right)^\beta
+```
+
+Where Accuracy is simply you accuracy at predicting `test_y` , $\epsilon$ and $delta$ are the privacy parameters from differential privacy, $D$ is the dataset size, and $\sigma$, $\alpha$ and $\beta$ are all constants set to 100, 5 and 3 respectively. 
+
 <a name="starter"/>
 
 ## 6. Where do I find starter code? :baby:
+
+Starter code is in the subfolders `/sandbox` and `/competition` respectively. Equally quick start by going straight to the Datalore Notebooks:
+- [Click to go to the sandbox]()
+- [Click to go to the competition]()
+
+**A note on Datalore**: Datalore is a paid product by JetBrains, which we have no affinity with what so ever. However, you get 72 hours for free per month of Jupiter Notebook time, running Python3.8. It appeared to give the exact time of the competition for free and the right dependancies, so we thought using it as the code templating tool made sense (to be clear, this is not an endorsement nor is it encouragement to use the paid tier ever and you certainly don’t need to provide them with payment information). 
 
 <a name="playback"/>
 
@@ -54,7 +118,7 @@ Click on the thumbnails below to begin playback:
 
 **Webinar 2: Getting Hands-On with the Tools and Frameworks of the UN PET Lab Hackathon**
 
-*Coming soon, check back after October 26th.*
+*[![Preview and link to webinar 2](https://img.youtube.com/vi/BDYjZUCEUog/maxresdefault.jpg)](https://www.youtube.com/watch?v=BDYjZUCEUog)
 
 <a name="creds"/>
 
