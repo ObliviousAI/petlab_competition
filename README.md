@@ -2,7 +2,7 @@
 
 Welcome to the main repository of the UN PET Lab's 2022 data science competition. In this competition, you'll get to learn about modern privacy-enhancing technologies, secure enclaves, differential privacy, the privacy-utility tradeoff, eyes-off-data-science and more. You will then apply your new-found knowledge to learn about a real UN dataset which must be kept semi-private.
 
-**Sign-up now if you haven'y already (will close registrations on the 7th of November):** https://petlab.officialstatistics.org/
+**Sign-up now if you haven't already (will close registrations on the 7th of November):** https://petlab.officialstatistics.org/
 
 ---
 
