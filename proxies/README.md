@@ -26,7 +26,7 @@ brew install oblv
 
 - Debian based distributions
 
-    For `debian` based distributions, download [oblv_0.4.0_amd64.deb](https://api.oblivious.ai/oblv-ccli/packages/0.4.0/oblv_0.4.0_amd64.deb)
+    For `debian` based distributions, download [oblv_0.4.0_amd64.deb](https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv_0.4.0_amd64.deb)
     and run
     
     ```
@@ -34,7 +34,7 @@ brew install oblv
     ```
 - RPM based distributions
 
-    For `rpm` based distributions, download [oblv-0.4.0-1.x86_64.rpm](https://api.oblivious.ai/oblv-ccli/packages/0.4.0/oblv-0.4.0-1.x86_64.rpm) and run.
+    For `rpm` based distributions, download [oblv-0.4.0-1.x86_64.rpm](https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv-0.4.0-1.x86_64.rpm) and run.
     
     ```
     sudo rpm --install oblv-0.4.0-1.x86_64.rpm
@@ -42,16 +42,12 @@ brew install oblv
 
 ### Windows
 
-For windows, download [oblv-0.4.0-x86_64.msi](https://api.oblivious.ai/oblv-ccli/packages/0.4.0/oblv-0.4.0-x86_64.msi)
+For windows, download [oblv-0.4.0-x86_64.msi](https://api.oblivious.ai/oblv-ccli/0.4.0/packages/oblv-0.4.0-x86_64.msi)
 
 
-### Other Linux Distros
+### Binaries
 
-On other Linux distros, `oblv` cli can be installed using
-
-```
-curl -L "https://api.oblivious.ai/oblv-ccli/install.sh"  | bash
-```
+You can also download the [binaries here](https://docs.oblivious.ai/cli/binaries).
 
 ### Test if OBLV works
 
