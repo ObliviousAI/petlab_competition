@@ -42,7 +42,7 @@ assuming this also minimizes
 |f(test\_x) - test\_y| 
 ```
 
-This is where enclaves and differential privacy enters the mix. You can ask questions using OpenDP (to take transformations and measurements), smart noise (to make noisy SQL queries and synthetic data) and DiffPrivLib (to train noisy machine learning models). Each query will cost you some epsilon and depending on the query, delta. The more of this you spend, the more your score will be decreased, but hopefully, you’ve learned something of value and thus your submissions are more accurate and thus your overall score improves.
+This is where enclaves and differential privacy enters the mix. You can ask questions using OpenDP (to take transformations and measurements), SmartNoise (to make noisy SQL queries and synthetic data) and DiffPrivLib (to train noisy machine learning models). Each query will cost you some epsilon and depending on the query, delta. The more of this you spend, the more your score will be decreased, but hopefully, you’ve learned something of value and thus your submissions are more accurate and thus your overall score improves.
 
 Trading off privacy versus accuracy (also known as utility) is a very important and “hot” topic within the privacy-enhancing technologies domain.  In this competition, you’ll be trying your best to balance these too.
 
