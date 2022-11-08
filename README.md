@@ -106,7 +106,7 @@ Where Accuracy is simply your accuracy at predicting `test_y` , $\epsilon$ and $
 
 Starter code is in the subfolders `/sandbox` and `/competition` respectively. Equally quick start by going straight to the Datalore Notebooks:
 - [Click to go to the sandbox](https://datalore.jetbrains.com/notebook/NXWf3mP22kJx8uvDGNLauL/d3m9EoiEF4v4UEchpwc0wp/)
-- Click to go to the competition (Coming soon: 2pm Indonesia Time, Nov 8th of September)
+- [Click to go to the competition](https://datalore.jetbrains.com/notebook/NXWf3mP22kJx8uvDGNLauL/X4znliLfyqvFsoOcGUw3Qu)
 
 **A note on Datalore**: Datalore is a paid product by JetBrains, which we have no affinity with whatsoever. However, you get 72 hours for free per month of Jupiter Notebook time, running Python3.8. It appeared to give the exact time of the competition for free and the right dependencies, so we thought using it as the code template tool made sense (to be clear, this is not an endorsement nor is it an encouragement to use the paid tier ever and you certainly don’t need to provide them with payment information).
 
